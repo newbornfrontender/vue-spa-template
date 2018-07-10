@@ -4,5 +4,6 @@
   "description": "A full-featured Vue template for SPA",
   "repository": "https://github.com/newbornfrontender/vue-spa-template.git",
   "author": "Infant Frontender <newbornfrontender@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "keywords": [ "Vue", "Webpack 4" ]
 }
