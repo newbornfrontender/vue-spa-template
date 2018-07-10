@@ -1,0 +1,8 @@
+{
+  "name": "vue-spa-template",
+  "version": "0.1.0",
+  "description": "A full-featured Vue template for SPA",
+  "repository": "https://github.com/newbornfrontender/vue-spa-template.git",
+  "author": "Infant Frontender <newbornfrontender@gmail.com>",
+  "license": "MIT"
+}
