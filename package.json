@@ -6,7 +6,22 @@
   "author": "Infant Frontender <newbornfrontender@gmail.com>",
   "license": "MIT",
   "keywords": [
-    "Yarn", "Vue", "Webpack 4", "PostHTML", "Pug", "Haml", "PostCSS", "Less",
-    "Sass", "Stylus", "Babel", "ESLint", "Jest"
-  ]
+    "Yarn",
+    "Vue",
+    "Webpack 4",
+    "PostHTML",
+    "Pug",
+    "Haml",
+    "PostCSS",
+    "Less",
+    "Sass",
+    "Stylus",
+    "Babel",
+    "ESLint",
+    "Jest"
+  ],
+  "dependencies": {
+    "vue": "^2.5.16",
+    "vue-router": "^3.0.1"
+  }
 }
