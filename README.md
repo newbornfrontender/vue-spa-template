@@ -9,7 +9,7 @@
     <img height="30" alt="Webpack logo" src="/help/logos/webpack-logo.png">
   </a>
   <a href="https://github.com/posthtml/posthtml/">
-    <img height="30" alt="Posthtml logo" src="/help/logos/posthtml-logo.png">
+    <img height="30" alt="PostHTML logo" src="/help/logos/posthtml-logo.png">
   </a>
   <a href="https://pugjs.org/">
     <img height="30" alt="Pug logo" src="/help/logos/pug-logo.png">
@@ -18,7 +18,7 @@
     <img height="30" alt="Haml logo" src="/help/logos/haml-logo.png">
   </a>
   <a href="https://postcss.org/">
-    <img height="30" alt="Postcss logo" src="/help/logos/postcss-logo.png">
+    <img height="30" alt="PostCSS logo" src="/help/logos/postcss-logo.png">
   </a>
   <a href="http://lesscss.org/">
     <img height="30" alt="Less logo" src="/help/logos/less-logo.png">
@@ -33,7 +33,7 @@
     <img height="30" alt="Babel logo" src="/help/logos/babel-logo.png">
   </a>
   <a href="https://eslint.org/">
-    <img height="30" alt="Eslint logo" src="/help/logos/eslint-logo.png">
+    <img height="30" alt="ESLint logo" src="/help/logos/eslint-logo.png">
   </a>
   <a href="https://facebook.github.io/jest/">
     <img height="30" alt="Jest logo" src="/help/logos/jest-logo.png">
