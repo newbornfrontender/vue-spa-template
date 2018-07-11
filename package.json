@@ -5,5 +5,8 @@
   "repository": "https://github.com/newbornfrontender/vue-spa-template.git",
   "author": "Infant Frontender <newbornfrontender@gmail.com>",
   "license": "MIT",
-  "keywords": [ "Vue", "Webpack 4" ]
+  "keywords": [
+    "Yarn", "Vue", "Webpack 4", "PostHTML", "Pug", "Haml", "PostCSS", "Less",
+    "Sass", "Stylus", "Babel", "ESLint", "Jest"
+  ]
 }
