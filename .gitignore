@@ -1,0 +1,4 @@
+/.jest_coverage/
+
+/node_modules/
+/dist/
