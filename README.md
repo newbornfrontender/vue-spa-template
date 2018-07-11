@@ -38,6 +38,9 @@
   <a href="https://facebook.github.io/jest/">
     <img height="30" alt="Jest logo" src="/help/logos/jest-logo.png">
   </a>
+</div>
+
+<div align="center">
   <h1>Vue SPA template</h1>
   <p>Полнофункциональный Vue шаблон для SPA на Webpack 4 с горячей перезагрузкой, линтингом и тестированием кода</p>
 </div>
