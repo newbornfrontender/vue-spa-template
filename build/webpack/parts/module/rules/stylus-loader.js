@@ -16,10 +16,9 @@ export default ({ test, path } = {}) => ({
         // include,
         // exclude,
         use: [
-          // env === 'watch' || 'production'
-          //   ? MiniCssExtractPlugin.loader
-          //   : 'vue-style-loader',
-          loaders(),
+          env === 'production' ?
+            MiniCssExtractPlugin.loader :
+            'vue-style-loader',
           {
             loader: 'css-loader',
             options: {
