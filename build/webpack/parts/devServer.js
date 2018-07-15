@@ -2,6 +2,9 @@
 
 import utils from '../modules/utils';
 
+const HOST = process.env.HOST;
+const PORT = process.env.PORT;
+
 export default ({ host, port } = {}) => ({
   devServer: {
     clientLogLevel: 'warning',
@@ -10,8 +13,8 @@ export default ({ host, port } = {}) => ({
     contentBase: utils.join('./dist/'),
     compress: true,
     // stats: "errors-only",
-    host,
-    port,
+    host: host || HOST || 'localhost',
+    port: port || PORT || '8080',
     open: true,
     overlay: {
       warnings: false,
