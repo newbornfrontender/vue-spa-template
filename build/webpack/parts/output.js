@@ -1,8 +1,14 @@
 'use strict';
 
-export default ({ filename, path } = {}) => ({
+import {
+  getResolvePath as resolve,
+  getContentHash as contentHash,
+} from '../modules/utils';
+
+export default ({ filename, chunkFilename, path } = {}) => ({
   output: {
-    filename,
-    path,
+    filename: filename || `./[name]${contentHash}.js`,
+    chunkFilename: chunkFilename || `./[name]${contentHash}.js`,
+    path: path || resolve('./dist/'),
   },
 });
