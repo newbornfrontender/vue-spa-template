@@ -9,6 +9,10 @@ import {
 
 // -----------------------------------------------------------------------------
 
+import WebpackMerge from 'webpack-merge';
+
+// -----------------------------------------------------------------------------
+
 import mode from '../parts/mode';
 import entry from '../parts/entry';
 import resolve from '../parts/resolve';
@@ -52,10 +56,6 @@ const plugins = new WebpackMerge([
   htmlWebpackPlugin(),
   // copyWebpackPlugin,
 ]);
-
-// -----------------------------------------------------------------------------
-
-import WebpackMerge from 'webpack-merge';
 
 // -----------------------------------------------------------------------------
 
