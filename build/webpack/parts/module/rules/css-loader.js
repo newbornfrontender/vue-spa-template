@@ -14,14 +14,13 @@ export default ({ test } = {}) => ({
         // include,
         // exclude,
         use: [
-          // env === 'production'
-          //   ? MiniCssExtractPlugin.loader
-          //   : 'vue-style-loader',
           // () => {
           //   if (env === 'production') return MiniCssExtractPlugin.loader;
           //   return 'vue-style-loader';
           // },
-          loaders(),
+          env === 'production' ?
+            MiniCssExtractPlugin.loader :
+            'vue-style-loader',
           'css-loader',
         ],
       },
