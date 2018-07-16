@@ -1,6 +1,0 @@
-1. html-webpack-plugin:
-  ☐ Протестировать inject на разных шаблонах @low
-    Пример:
-      inject: pug || haml || hbs ? false : true
-    Описание:
-      Inject должен быть отключен, если можно использовать htmlWebpackPlugin.options.*
