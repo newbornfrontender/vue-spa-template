@@ -1,5 +1,6 @@
 'use strict';
 
+// Утилиты
 // -----------------------------------------------------------------------------
 
 import {
@@ -7,32 +8,38 @@ import {
   getHash as hash,
 } from '../modules/utils';
 
+// Webpack плагины
 // -----------------------------------------------------------------------------
 
 import WebpackMerge from 'webpack-merge';
 
+// Webpack части: ./*
 // -----------------------------------------------------------------------------
 
 import mode from '../parts/mode';
 import entry from '../parts/entry';
 import resolve from '../parts/resolve';
 
+// Webpack части: ./module/rules/*
 // -----------------------------------------------------------------------------
 
 import eslintLoader from '../parts/module/rules/eslint-loader';
 import vueLoader from '../parts/module/rules/vue-loader';
 import htmlLoader from '../parts/module/rules/html-loader';
-import ejsLoader from '../parts/module/rules/ejs-loader';
 import cssLoader from '../parts/module/rules/css-loader';
 import stylusLoader from '../parts/module/rules/stylus-loader';
 import babelLoader from '../parts/module/rules/babel-loader';
 import * as fileLoader from '../parts/module/rules/file-loader';
 
+let ejsLoader = {
+  rules: require('../parts/module/rules/ejs-loader'),
+};
+
 const rules = new WebpackMerge([
   eslintLoader(),
   vueLoader(),
   htmlLoader(),
-  // ejsLoader(),
+  ejsLoader.rules(),
   cssLoader(),
   stylusLoader(),
   babelLoader(),
@@ -41,10 +48,22 @@ const rules = new WebpackMerge([
   fileLoader.fonts(),
 ]);
 
+// Webpack части: ./module/*
+// -----------------------------------------------------------------------------
+
+import noParse from '../parts/module/noParse';
+
+ejsLoader.push({
+  module: require('../parts/module/ejsLoader'),
+});
+
 const module = new WebpackMerge([
   rules,
+  // noParse(),
+  // ejsLoader.module(),
 ]);
 
+// Webpack части: ./plugins/*
 // -----------------------------------------------------------------------------
 
 import htmlWebpackPlugin from '../parts/plugins/html-webpack-plugin';
@@ -57,6 +76,7 @@ const plugins = new WebpackMerge([
   // copyWebpackPlugin,
 ]);
 
+// Конфигурация
 // -----------------------------------------------------------------------------
 
 export default new WebpackMerge([
@@ -66,3 +86,38 @@ export default new WebpackMerge([
   module,
   plugins,
 ]);
+
+// =============================================================================
+
+// +-------+-------------------------------------------------------------------+
+// | Title | ejsLoader                                                         |
+// +-------+-------------------------------------------------------------------+
+// | Notes | Different paths:                                                  |
+// |       | '../parts/module/rules/ejs-loader' / '../parts/module/ejsLoader'  |
+// +-------+-------------------------------------------------------------------+
+
+// Rules
+// -----------------------------------------------------------------------------
+
+// const ejsLoader = (path) => require(path);
+
+// const rules = new WebpackMerge([
+//   ejsLoader('../parts/module/rules/ejs-loader')(),
+// ]);
+
+// // OR
+
+// let rulesInner = [
+//   // ...
+// ];
+
+// rulesInner.push(
+//   require('../parts/module/rules/ejs-loader')(),
+// )
+
+// const rules = new WebpackMerge([ rulesInner ]);
+
+// // Module
+// // -----------------------------------------------------------------------------
+
+// // ...
