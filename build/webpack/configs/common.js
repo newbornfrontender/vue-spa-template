@@ -53,9 +53,7 @@ const rules = new WebpackMerge([
 
 import noParse from '../parts/module/noParse';
 
-ejsLoader.push({
-  module: require('../parts/module/ejsLoader'),
-});
+ejsLoader.module = require('../parts/module/ejsLoader');
 
 const module = new WebpackMerge([
   rules,
@@ -87,7 +85,13 @@ export default new WebpackMerge([
   plugins,
 ]);
 
+
+
 // =============================================================================
+// =============================================================================
+// =============================================================================
+
+
 
 // +-------+-------------------------------------------------------------------+
 // | Title | ejsLoader                                                         |
