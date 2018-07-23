@@ -6,7 +6,7 @@
   "author": "Infant Frontender <newbornfrontender@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "cross-env NODE_ENV=development HOST=localhost PORT=8080 webpack-dev-server --progress --config build/webpack/configs/development.babel.js",
+    "serve": "cross-env NODE_ENV=development HOST=localhost PORT=8080 webpack-dev-server --progress --config build/webpack/configs/development.babel.js",
     "build": "cross-env NODE_ENV=production webpack --config build/webpack/configs/production.babel.js",
     "lint": "eslint --ext .js,.vue src",
     "lint:fix": "eslint --ext .js,.vue src --fix",
