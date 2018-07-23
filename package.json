@@ -6,8 +6,8 @@
   "author": "Infant Frontender <newbornfrontender@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "cross-env NODE_ENV=development HOST=localhost PORT=8080 webpack-dev-server --progress --config ./build/webpack/configs/development.babel.js",
-    "build": "cross-env NODE_ENV=production webpack --config ./build/webpack/configs/production.babel.js",
+    "start": "cross-env NODE_ENV=development HOST=localhost PORT=8080 webpack-dev-server --progress --config build/webpack/configs/development.babel.js",
+    "build": "cross-env NODE_ENV=production webpack --config build/webpack/configs/production.babel.js",
     "lint": "eslint --ext .js,.vue src",
     "lint:fix": "eslint --ext .js,.vue src --fix",
     "tests": "yarn test/jest",
@@ -36,6 +36,7 @@
   "devDependencies": {
     "@babel/core": "^7.0.0-beta.52",
     "@babel/preset-env": "^7.0.0-beta.52",
+    "@babel/register": "^7.0.0-beta.54",
     "@vue/test-utils": "^1.0.0-beta.20",
     "autoprefixer": "^8.6.5",
     "babel-core": "7.0.0-bridge.0",
