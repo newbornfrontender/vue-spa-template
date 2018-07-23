@@ -1,6 +1,6 @@
 {
   "name": "vue-spa-template",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A full-featured Vue template for SPA",
   "repository": "https://github.com/newbornfrontender/vue-spa-template.git",
   "author": "Infant Frontender <newbornfrontender@gmail.com>",
@@ -74,26 +74,5 @@
     "webpack-cli": "^3.0.8",
     "webpack-dev-server": "^3.1.4",
     "webpack-merge": "^4.1.3"
-  },
-  "jest": {
-    "collectCoverage": true,
-    "collectCoverageFrom": [
-      "src/**/*.{js,vue}"
-    ],
-    "coverageDirectory": ".jest_coverage",
-    "moduleFileExtensions": [
-      "js",
-      "vue"
-    ],
-    "moduleNameMapper": {
-      "^@/(.*)$": "<rootDir>/src/$1"
-    },
-    "transform": {
-      "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
-      ".*\\.(vue)$": "<rootDir>/node_modules/vue-jest"
-    },
-    "snapshotSerializers": [
-      "<rootDir>/node_modules/jest-serializer-vue"
-    ]
   }
 }
