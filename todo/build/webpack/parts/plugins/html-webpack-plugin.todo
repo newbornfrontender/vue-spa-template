@@ -1,3 +1,0 @@
-☐ Inject должен быть отключен, если можно использовать htmlWebpackPlugin.options.* @low
-☐ Протестировать возможность htmlWebpackPlugin.options.* на разных свойствах @low
-☐ Протестировать inject на разных шаблонах @low
