@@ -1,9 +1,9 @@
 'use strict';
 
-import { options } from './utils';
+import { config } from './utils';
 
 export default () => {
-  let config = options('../../../options.config');
+  const options = config('../../../options.config');
 
-  return config;
+  return options;
 };
