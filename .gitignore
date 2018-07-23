@@ -1,6 +1,5 @@
-# /todo/
 /.jest_coverage/
 /node_modules/
-/dist/
+/projects/test/dist/
 
 yarn-error.log
