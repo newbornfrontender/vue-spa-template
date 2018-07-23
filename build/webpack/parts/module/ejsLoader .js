@@ -1,8 +1,8 @@
 'use strict';
 
-export default ({ interpolate, evaluate } = {}) => ({
+export default ({ variable, interpolate, evaluate } = {}) => ({
   ejsLoader: {
-    variable: 'data',
+    variable: variable || 'data',
     interpolate: interpolate || /\{\{(.+?)\}\}/g,
     evaluate: evaluate || /\[\[(.+?)\]\]/g,
   },
