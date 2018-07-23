@@ -2,6 +2,6 @@
 
 export default ({ noParse } = {}) => ({
   module: {
-    noParse: noParse || '',
+    noParse: noParse || '', // ?
   },
 });
