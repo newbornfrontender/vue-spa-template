@@ -36,10 +36,13 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 
 // export default config;
 
+const projectName = 'test';
+
 export default ({ filename, template, title, viewport } = {}) => ({
   plugins: [
     new HtmlWebpackPlugin({
-      template: template || './templates/index.html',
+      // template: template || './templates/index.html',
+      template: template || `./projects/${projectName}/public/templates/index.html`,
       filename: filename || 'index.html',
       title: title || 'VueJs + Webpack 4 template',
       meta: {
