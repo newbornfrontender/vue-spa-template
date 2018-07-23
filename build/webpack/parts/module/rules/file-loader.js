@@ -1,9 +1,6 @@
 'use strict';
 
-import {
-  getAssetsPath as assets,
-  getHash as hash,
-} from '../../../modules/utils';
+import { assets, hash } from '../../../modules/utils';
 
 export default {
   img: ({ test, name } = {}) => ({
@@ -16,7 +13,9 @@ export default {
           use: {
             loader: 'file-loader',
             options: {
-              name: name || assets(`img/[name]${hash}.[ext]?[hash]`),
+              name: name || assets(`img/[name]${hash()}.[ext]${hash({
+                prefix: '?',
+              })}`),
             },
           },
         },
@@ -24,7 +23,7 @@ export default {
     },
   }),
 
-  media = ({ test, name } = {}) => ({
+  media: ({ test, name } = {}) => ({
     module: {
       rules: [
         {
@@ -34,7 +33,9 @@ export default {
           use: {
             loader: 'file-loader',
             options: {
-              name: name || assets(`media/[name]${hash}.[ext]?[hash]`),
+              name: name || assets(`media/[name]${hash()}.[ext]${hash({
+                prefix: '?',
+              })}`),
             },
           },
         },
@@ -42,7 +43,7 @@ export default {
     },
   }),
 
-  fonts = ({ test, name } = {}) => ({
+  fonts: ({ test, name } = {}) => ({
     module: {
       rules: [
         {
@@ -52,7 +53,9 @@ export default {
           use: {
             loader: 'file-loader',
             options: {
-              name: name || assets(`fonts/[name]${hash}.[ext]?[hash]`),
+              name: name || assets(`fonts/[name]${hash()}.[ext]${hash({
+                prefix: '?',
+              })}`),
             },
           },
         },
