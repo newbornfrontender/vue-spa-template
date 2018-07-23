@@ -1,119 +1,110 @@
 'use strict';
 
-// +-------------+-------------------------------------------------------------+
-// | Title       | Utils                                                       |
-// +-------------+-------------------------------------------------------------+
-// | Description | Utils for webpack and other build config files              |
-// +-------------+-------------------------------------------------------------+
-
-// Dependencies modules
 // -----------------------------------------------------------------------------
 
 import path from 'path';
 
-// Environments
-// -----------------------------------------------------------------------------
-
 const env = process.env.NODE_ENV;
 
-const envMode = (mode, envValue) => {
-  if (env === mode) return envValue;
-};
-
-// Hashes
 // -----------------------------------------------------------------------------
 
-const hashOptions = {
-  hashType: 'md5',
-  digestType: 'hex',
-  length: '5',
+const getJoin = dir => {
+  const subDeep = '../../../';
+
+  return path.join(__dirname, subDeep, dir)
 };
 
-// const hashType = 'md5';
-// const digestType = 'hex';
-const hashesLength = '5';
+const getResolve = dir => {
+  const subDeep = '../../../';
 
-// const hash = (name, hashType, digestType, length) => {
-//   hashType = hashType || hashOptions.hashType;
-//   digestType = digestType || hashOptions.digestType;
-//   length = length || hashOptions.length;
+  return path.resolve(__dirname, subDeep, dir)
+};
 
-//   if (env === 'production') {
-//     // return '.[' + hashType + ':' + name + ':' + digestType + ':' + length + ']';
-//     return `.[${hashType}:${name}:${digestType}:${length}]`;
-//   };
+const getHash = ({ prefix, hashType, digestType, length } = {}) => {
+  const option = {
+    prefix: '.', // (. / ?)
+    hashType: 'md5', // (md5 / ...)
+    digestType: 'hex', // (hex / ...)
+    length: {
+      pre: '5', // Используется при хэше, начинающемся с: .
+      post: '32', // Используется при хэше, начинающемся с: ?
+    },
+  };
+
+  prefix = prefix || option.prefix;
+  hashType = hashType || option.hashType;
+  digestType = digestType || option.digestType;
+  length = prefix === '.' ?
+    length || option.length.pre :
+    length || option.length.post;
+
+  return env === 'production' ?
+    `${prefix}[${hashType}:hash:${digestType}:${length}]` :
+    '';
+};
+
+const getContentHash =  ({ prefix, length } = {}) => {
+  const option = {
+    prefix: '.', // (. / ?)
+    length: {
+      pre: '5', // Используется при хэше, начинающемся с: .
+      post: '32', // Используется при хэше, начинающемся с: ?
+    },
+  };
+
+  prefix = prefix || option.prefix;
+  length = prefix === '.' ?
+    length || option.length.pre :
+    length || option.length.post;
+
+  return env === 'production' ? `${prefix}[contenthash:${length}]` : '';
+};
+
+const getAssets = dir => {
+  const subDir = 'static';
+
+  return path.posix.join(subDir, dir)
+};
+
+const readOptions = path => {
+  let options;
+
+  try {
+    options = require(path);
+  } catch(err) {
+    console.error(`No config file found at: ${path}`);
+
+    options = {};
+  };
+
+  return options;
+};
+
+// -----------------------------------------------------------------------------
+
+export {
+  getJoin as join,
+  getResolve as resolve,
+  getHash as hash,
+  getContentHash as contentHash,
+  getAssets as assets,
+  readOptions as options,
+};
+
+// =============================================================================
+
+// import getHash from './parts/hash';
+// import getContentHash from './parts/content-hash';
+// import getJoin from './parts/join';
+// import getResolve from './parts/resolve';
+// import getAssets from './parts/assets';
+
+// export {
+//   getJoin as join,
+//   getResolve as resolve,
+//   getHash as hash,
+//   getContentHash as contentHash,
+//   getAssets as assets,
 // };
 
-const hash = (name, hashType, digestType, length) => {
-  hashType = hashType || hashOptions.hashType;
-  digestType = digestType || hashOptions.digestType;
-  length = length || hashOptions.length;
-
-  if (env === 'production') {
-    // return '.[' + hashType + ':' + name + ':' + digestType + ':' + length + ']';
-    return `.[${hashType}:${name}:${digestType}:${length}]`;
-  };
-};
-
-// Export utils configs
-// -----------------------------------------------------------------------------
-
-export default {
-
-  // Modes utils
-  //----------------------------------------------------------------------------
-
-  devMode: (devValue, otherValue) => env === 'development'
-    ? devValue
-    : otherValue,
-
-  prodMode: (prodValue, otherValue) => env === 'production'
-    ? prodValue
-    : otherValue,
-
-  only: {
-    devMode: (devValue) => {
-      return envMode('development', devValue);
-    },
-
-    prodMode: (prodValue) => {
-      return envMode('production', prodValue);
-    },
-  },
-
-  // Hashes utils
-  //----------------------------------------------------------------------------
-
-  hash: env === 'production' ? '.[hash:' + hashesLength + ']' : '', // [md5:hash:hex:5]
-
-  // contentHash: env === 'production' ? '.[contenthash:' + hashesLength + ']' : '',
-  // contentHash: (length) => {
-  //   length = length || hashesLength;
-
-  //   if (env === 'production') {
-  //     return '.[contenthash:' + length + ']';
-  //   };
-  // },
-  contentHash: (length) => {
-    length = length || hashOptions.length;
-
-    if (env === 'production') {
-      return `.[contenthash:${length}]`;
-    };
-  },
-
-  // Paths utils
-  //----------------------------------------------------------------------------
-
-  join: dir => path.join(__dirname, '../..', dir), // ?
-
-  resolve: (dir) => {
-    return path.resolve(__dirname, '../..', dir); // ?
-  },
-
-  assetsPath: (_path) => {
-    const assetsSubDirectory = 'static'; // ?
-
-    return path.posix.join(assetsSubDirectory, _path);
-  },
-};
+// =============================================================================
