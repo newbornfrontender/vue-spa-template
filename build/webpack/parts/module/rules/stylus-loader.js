@@ -1,10 +1,8 @@
 'use strict';
 
-import { getStylesLoaders as loaders } from '../../../modules/utils';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
-// import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-
-// const env = process.env.NODE_ENV;
+const env = process.env.NODE_ENV;
 
 const components = true;
 
@@ -29,8 +27,7 @@ export default ({ test, path } = {}) => ({
             loader: 'postcss-loader',
             options: {
               config: {
-                // path: !components ? 'configs/processors/stylus/postcss.config.js' : '', // './', ''
-                path: path || stylus.postcss.path('configs/processors/stylus/postcss.config.js'),
+                path: path || !components ? 'configs/processors/stylus/postcss.config.js' : '',
                 ctx: {
                   autoprefixer: {
                     cascade: false,

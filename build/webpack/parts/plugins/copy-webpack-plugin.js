@@ -1,15 +1,20 @@
 'use strict';
 
-import utils from '../../modules/utils';
+import { resolve } from '../../modules/utils';
 
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 
 export default ({
   plugins: [
     new CopyWebpackPlugin([
+      // {
+      //   from: resolve('static/img'),
+      //   to: resolve('dist/static/img'),
+      //   toType: 'dir',
+      // },
       {
-        from: utils.resolve('./static/img/'),
-        to: utils.resolve('./dist/static/img/'),
+        from: resolve('static/robots.txt'),
+        to: resolve('dist'),
         toType: 'dir',
       },
     ]),

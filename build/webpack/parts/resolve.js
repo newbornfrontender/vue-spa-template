@@ -1,15 +1,15 @@
 'use strict';
 
-import utils from '../modules/utils';
+import { join } from '../modules/utils';
 
 export default ({ extensions, alias } = {}) => ({
   resolve: {
-    extensions: extensions || [ '.json', '.js', '.vue' ],
+    extensions: extensions || [ '.js', '.vue', '.json' ],
     alias: alias || {
-      'assets': utils.join('./assets/'),
-      'pages': utils.join('./src/pages/'),
-      'static': utils.join('./static/'),
-      'components': utils.join('./src/components/'),
+      'assets': join('assets'),
+      'pages': join('src/pages'),
+      'static': join('static'),
+      'components': join('src/components'),
     },
   },
 });
