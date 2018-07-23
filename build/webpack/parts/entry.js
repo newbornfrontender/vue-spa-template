@@ -1,8 +1,7 @@
 'use strict';
 
-const projectName = 'test';
+const dir = 'test';
 
 export default ({ entry } = {}) => ({
-  // entry: entry || './src/index.js',
-  entry: entry || `./projects/${projectName}/src/index.js`,
+  entry: entry || `./projects/${dir}/src/main.js`,
 });

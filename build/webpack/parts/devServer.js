@@ -2,7 +2,7 @@
 
 import { join } from '../modules/utils';
 
-const projectName = 'test';
+const dir = 'test';
 
 const HOST = process.env.HOST;
 const PORT = process.env.PORT;
@@ -13,7 +13,7 @@ export default ({ host, port } = {}) => ({
     hot: true,
     // https: true,
     // contentBase: join('dist'),
-    contentBase: join(`projects/${projectName}/dist`),
+    contentBase: join(`projects/${dir}/dist`),
     compress: true,
     // stats: "errors-only",
     host: host || HOST || 'localhost',

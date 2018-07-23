@@ -4,21 +4,19 @@ import { resolve } from '../../modules/utils';
 
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 
-const projectName = 'test';
+const dir = 'test';
 
 export default ({
   plugins: [
     new CopyWebpackPlugin([
       {
-        // from: resolve('static/robots.txt'),
-        from: resolve(`projects/${projectName}/public/robots.txt`),
-        // to: resolve('dist'),
-        to: resolve(`projects/${projectName}/dist`),
+        from: resolve(`projects/${dir}/public/robots.txt`),
+        to: resolve(`projects/${dir}/dist`),
         toType: 'dir',
       },
       {
-        from: resolve(`projects/${projectName}/public/favicon.ico`),
-        to: resolve(`projects/${projectName}/dist`),
+        from: resolve(`projects/${dir}/public/favicon.ico`),
+        to: resolve(`projects/${dir}/dist`),
         toType: 'dir',
       },
     ]),

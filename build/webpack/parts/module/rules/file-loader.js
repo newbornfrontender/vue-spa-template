@@ -13,7 +13,7 @@ export default {
           use: {
             loader: 'file-loader',
             options: {
-              name: name || assets(`img/[name]${hash()}.[ext]${hash({
+              name: name || assets.static(`img/[name]${hash()}.[ext]${hash({
                 prefix: '?',
               })}`),
             },
@@ -33,7 +33,7 @@ export default {
           use: {
             loader: 'file-loader',
             options: {
-              name: name || assets(`media/[name]${hash()}.[ext]${hash({
+              name: name || assets.static(`media/[name]${hash()}.[ext]${hash({
                 prefix: '?',
               })}`),
             },
@@ -53,7 +53,7 @@ export default {
           use: {
             loader: 'file-loader',
             options: {
-              name: name || assets(`fonts/[name]${hash()}.[ext]${hash({
+              name: name || assets.static(`fonts/[name]${hash()}.[ext]${hash({
                 prefix: '?',
               })}`),
             },
