@@ -23,10 +23,14 @@ module.exports = ({ env, file, options }) => ({
     false,
   plugins: {
     'postcss-nested': processor.postcss ? {} : false,
-    'postcss-import': processor.postcss ? { root: file.dirname } : false,
+    'postcss-import': processor.postcss ?
+      {
+        root: file.dirname,
+      } :
+      false,
     'postcss-strip-inline-comments': processor.postcss ? {} : false,
     'postcss-prettify': processor.postcss ?
-      env === 'watch' || 'development' ? {} : false :
+      env === 'development' ? {} : false :
       false,
     'autoprefixer': env === 'production' ?
       part.autoprefixer ?
