@@ -3,11 +3,14 @@
 // Утилиты
 // -----------------------------------------------------------------------------
 
-import {
-  getResolvePath as resolve,
-  getContentHash as contentHash,
-  getOptionPath as optionPath,
-} from '../modules/utils';
+// import {
+//   getResolvePath as resolve,
+//   getContentHash as contentHash,
+// } from '../modules/utils';
+
+// import { getOptionsConfig as optionsConfig } from '../modules/keyreader';
+
+// const optimizConfig = optionsConfig.optimization;
 
 // Webpack плагины
 // -----------------------------------------------------------------------------
@@ -19,52 +22,53 @@ import WebpackMerge from 'webpack-merge';
 
 import baseConfig from './common';
 
-// Webpack части: ./*
+// Webpack части: <dir>/<parts>
 // -----------------------------------------------------------------------------
 
 import output from '../parts/output';
 import optimization from '../parts/optimization';
 
-// Webpack части: ./plugins/*
+// Webpack части: <dir>/plugins/<parts>
 // -----------------------------------------------------------------------------
 
 import dynamicCdnWebpackPlugin from '../parts/plugins/dynamic-cdn-webpack-plugin';
 import miniCssExtractPlugin from '../parts/plugins/mini-css-extract-plugin';
 
-const CDN_PLUGIN = () => {
-  const option = optionPath('../../options/webpack/optimization');
+// const CDN_PLUGIN = () => {
+//   const CDN = optimizConfig.cdn.enabled;
+//   const PLUGIN = optimizConfig.cdn.plugin;
 
-  const CDN = option.cdn.enabled;
-  const PLUGIN = option.cdn.plugin;
-
-  if (CDN) {
-    switch (PLUGIN) {
-      case 'dynamic-cdn-webpack-plugin': return dynamicCdnWebpackPlugin;
-    };
-  };
-}
+//   if (CDN) {
+//     switch (PLUGIN) {
+//       // case 'dynamic-cdn-webpack-plugin': return dynamicCdnWebpackPlugin;
+//       case 'dynamic-cdn-webpack-plugin':
+//         dynamicCdnWebpackPlugin;
+//         break;
+//     };
+//   };
+// };
 
 const plugins = new WebpackMerge([
   output,
-  CDN_PLUGIN,
   miniCssExtractPlugin(),
+
+  // CDN_PLUGIN,
 ]);
 
 // Production конфигурация webpack
 // -----------------------------------------------------------------------------
 
-const OPTIMIZATION = () => {
-  const option = optionPath('../../options/webpack/optimization');
+// const OPTIMIZATION = () => {
+//   const SPLIT_CHUNKS = optimizConfig.splitChunks.enabled();
 
-  const SPLIT_CHUNKS = option.splitChunks.enabled;
-
-  if (SPLIT_CHUNKS) return optimization;
-}
+//   if (SPLIT_CHUNKS) return optimization;
+// };
 
 const prodConfig = new WebpackMerge([
   output(),
-  OPTIMIZATION,
   plugins,
+
+  // OPTIMIZATION,
 ]);
 
 // Конфигурация

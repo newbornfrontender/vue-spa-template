@@ -10,12 +10,12 @@ import WebpackMerge from 'webpack-merge';
 
 import baseConfig from './common';
 
-// Webpack части: ./*
+// Webpack части: <dir>/<parts>
 // -----------------------------------------------------------------------------
 
 import devServer from './parts/dev-server';
 
-// Webpack части: ./plugins/*
+// Webpack части: <dir>/plugins/<parts>
 // -----------------------------------------------------------------------------
 
 import hotModuleReplacementPlugin from '../parts/plugins/hot-module-replacement-plugin';
