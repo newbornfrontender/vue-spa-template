@@ -1,0 +1,7 @@
+/build/
+/configs/
+/projects/test/dist/
+
+option.config.js
+posthtml.config.js
+postcss.config.js
