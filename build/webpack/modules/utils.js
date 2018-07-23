@@ -1,24 +1,18 @@
 'use strict';
 
+// ?
 // -----------------------------------------------------------------------------
 
 import path from 'path';
 
 const env = process.env.NODE_ENV;
 
+// ?
 // -----------------------------------------------------------------------------
 
-const getJoin = dir => {
-  const subDeep = '../../../';
+const getJoinPath = dir => path.join(__dirname, '../../../', dir);
 
-  return path.join(__dirname, subDeep, dir)
-};
-
-const getResolve = dir => {
-  const subDeep = '../../../';
-
-  return path.resolve(__dirname, subDeep, dir)
-};
+const getResolvePath = dir => path.resolve(__dirname, '../../../', dir);
 
 const getHash = ({ prefix, hashType, digestType, length } = {}) => {
   const option = {
@@ -43,7 +37,7 @@ const getHash = ({ prefix, hashType, digestType, length } = {}) => {
     '';
 };
 
-const getContentHash =  ({ prefix, length } = {}) => {
+const getContentHash = ({ prefix, length } = {}) => {
   const option = {
     prefix: '.', // (. / ?)
     length: {
@@ -60,51 +54,32 @@ const getContentHash =  ({ prefix, length } = {}) => {
   return env === 'production' ? `${prefix}[contenthash:${length}]` : '';
 };
 
-const getAssets = dir => {
-  const subDir = 'static';
-
-  return path.posix.join(subDir, dir)
+const getAssetsPath = {
+  static: dir => path.posix.join('static', dir),
 };
 
-const readOptions = path => {
-  let options;
+const readConfigFile = dir => {
+  let config;
 
   try {
-    options = require(path);
+    config = require(dir);
   } catch(err) {
-    console.error(`No config file found at: ${path}`);
+    console.error(`No config file found at: ${dir}`);
 
-    options = {};
+    config = {};
   };
 
-  return options;
+  return config;
 };
 
+// ?
 // -----------------------------------------------------------------------------
 
 export {
-  getJoin as join,
-  getResolve as resolve,
+  getJoinPath as join,
+  getResolvePath as resolve,
   getHash as hash,
   getContentHash as contentHash,
-  getAssets as assets,
-  readOptions as options,
+  getAssetsPath as assets,
+  readConfigFile as config,
 };
-
-// =============================================================================
-
-// import getHash from './parts/hash';
-// import getContentHash from './parts/content-hash';
-// import getJoin from './parts/join';
-// import getResolve from './parts/resolve';
-// import getAssets from './parts/assets';
-
-// export {
-//   getJoin as join,
-//   getResolve as resolve,
-//   getHash as hash,
-//   getContentHash as contentHash,
-//   getAssets as assets,
-// };
-
-// =============================================================================
