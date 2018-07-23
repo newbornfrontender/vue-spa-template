@@ -3,43 +3,41 @@
 // Утилиты
 // -----------------------------------------------------------------------------
 
-import {
-  getAssetsPath as assets,
-  getHash as hash,
-} from '../modules/utils';
+// import {  } from '../modules/utils';
 
 // Webpack плагины
 // -----------------------------------------------------------------------------
 
 import WebpackMerge from 'webpack-merge';
 
-// Webpack части: ./*
+// Webpack части: <dir>/<parts>
 // -----------------------------------------------------------------------------
 
 import mode from '../parts/mode';
 import entry from '../parts/entry';
 import resolve from '../parts/resolve';
 
-// Webpack части: ./module/rules/*
+// Webpack части: <dir>/module/rules/<parts>
 // -----------------------------------------------------------------------------
 
-import eslintLoader from '../parts/module/rules/eslint-loader';
+// import eslintLoader from '../parts/module/rules/eslint-loader';
 import vueLoader from '../parts/module/rules/vue-loader';
 import htmlLoader from '../parts/module/rules/html-loader';
 import cssLoader from '../parts/module/rules/css-loader';
 import stylusLoader from '../parts/module/rules/stylus-loader';
 import babelLoader from '../parts/module/rules/babel-loader';
-import * as fileLoader from '../parts/module/rules/file-loader';
+// import * as fileLoader from '../parts/module/rules/file-loader';
+import fileLoader from '../parts/module/rules/file-loader';
 
-let ejsLoader = {
-  rules: require('../parts/module/rules/ejs-loader'),
-};
+// let ejsLoader = {
+//   rules: require('../parts/module/rules/ejs-loader'),
+// };
 
 const rules = new WebpackMerge([
-  eslintLoader(),
+  // eslintLoader(),
   vueLoader(),
   htmlLoader(),
-  ejsLoader.rules(),
+  // ejsLoader.rules(),
   cssLoader(),
   stylusLoader(),
   babelLoader(),
@@ -48,12 +46,16 @@ const rules = new WebpackMerge([
   fileLoader.fonts(),
 ]);
 
-// Webpack части: ./module/*
+// Webpack части: <dir>/module/<parts>
 // -----------------------------------------------------------------------------
 
-import noParse from '../parts/module/noParse';
+// import noParse from '../parts/module/noParse';
 
-ejsLoader.module = require('../parts/module/ejsLoader');
+// ejsLoader.module = require('../parts/module/ejsLoader');
+// ejsLoader.module: require('../parts/module/ejsLoader');
+// ejsLoader.push({
+//   module: require('../parts/module/ejsLoader'),
+// });
 
 const module = new WebpackMerge([
   rules,
@@ -61,7 +63,7 @@ const module = new WebpackMerge([
   // ejsLoader.module(),
 ]);
 
-// Webpack части: ./plugins/*
+// Webpack части: <dir>/plugins/<parts>
 // -----------------------------------------------------------------------------
 
 import htmlWebpackPlugin from '../parts/plugins/html-webpack-plugin';
@@ -71,7 +73,7 @@ import copyWebpackPlugin from '../parts/plugins/copy-webpack-plugin';
 const plugins = new WebpackMerge([
   vueLoaderPlugin,
   htmlWebpackPlugin(),
-  // copyWebpackPlugin,
+  copyWebpackPlugin,
 ]);
 
 // Конфигурация
@@ -84,44 +86,3 @@ export default new WebpackMerge([
   module,
   plugins,
 ]);
-
-
-
-// =============================================================================
-// =============================================================================
-// =============================================================================
-
-
-
-// +-------+-------------------------------------------------------------------+
-// | Title | ejsLoader                                                         |
-// +-------+-------------------------------------------------------------------+
-// | Notes | Different paths:                                                  |
-// |       | '../parts/module/rules/ejs-loader' / '../parts/module/ejsLoader'  |
-// +-------+-------------------------------------------------------------------+
-
-// Rules
-// -----------------------------------------------------------------------------
-
-// const ejsLoader = (path) => require(path);
-
-// const rules = new WebpackMerge([
-//   ejsLoader('../parts/module/rules/ejs-loader')(),
-// ]);
-
-// // OR
-
-// let rulesInner = [
-//   // ...
-// ];
-
-// rulesInner.push(
-//   require('../parts/module/rules/ejs-loader')(),
-// )
-
-// const rules = new WebpackMerge([ rulesInner ]);
-
-// // Module
-// // -----------------------------------------------------------------------------
-
-// // ...
