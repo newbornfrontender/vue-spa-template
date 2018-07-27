@@ -1,0 +1,5 @@
+/.jest_coverage/
+/node_modules/
+/projects/test/dist/
+
+yarn-error.log
