@@ -35,9 +35,7 @@ module.exports = ({ env, file, options }) => ({
     'autoprefixer': env === 'production' ?
       part.autoprefixer ?
         parts.autoprefixer({
-          browsers: [
-            'last 25 versions',
-          ],
+          browsers: [ 'last 25 versions' ],
           grid: true,
         }) :
         options.autoprefixer :

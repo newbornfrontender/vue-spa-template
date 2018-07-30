@@ -1,9 +1,9 @@
 'use strict';
 
 const autoprefixer = ({ browsers, grid } = {}) => ({
-  browsers, // browsers: [ prefixes ]
+  browsers: browsers || [ 'last 5 versions' ],
   cascade: false,
-  grid, // grid: true
+  grid: grid || false,
 });
 
 module.exports = {
